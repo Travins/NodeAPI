@@ -6,14 +6,16 @@ const passportConf = require('../passport')
 const { validateBody, schemas } = require('../helpers/routeHelpers')
 const UsersController = require('../controllers/users')
 
+const passportSignin = passport.authenticate('local', { session: false })
+const passportJWT = passport.authenticate('jwt', { session: false })
 
 router.route('/signup')
     .post(validateBody(schemas.authSchema), UsersController.signUp)
 
 router.route('/signin')
-    .post(UsersController.signIn)
+    .post(validateBody(schemas.authSchema), passportSignin, UsersController.signIn)
 
 router.route('/secret')
-    .get(passport.authenticate('jwt', { session: false }), UsersController.secret)
+    .get(passportJWT, UsersController.secret)
 
 module.exports = router
