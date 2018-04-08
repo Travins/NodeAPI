@@ -1,9 +1,12 @@
 module.exports = {
     signUp: async (req, res, next) => {
+        //Email & password
+        console.log('req.value.body',req.value.body)
         console.log('UsersController.signUp() called!')
     },
 
     signIn: async (req, res, next) => {
+        //Generate token
         console.log('UsersController.signIn() called!')      
     },
 
