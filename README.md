@@ -1,4 +1,4 @@
-# edauto
+# NodeAPI
 
 > Node Express With JWT API
 
